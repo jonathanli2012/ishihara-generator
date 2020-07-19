@@ -1,40 +1,48 @@
 from PIL import Image, ImageDraw 
-import random
+import random, math
 from detect import *
-from draw_circle import *
-from gen_circles import *
+from circle import *
+from colors import *
 
-size_x = 600
-size_y = 600
-min_rad = 4
-max_rad = 8
-total_circles = 1800
 
-red_green_colors_bkg = ["#f9b409","#e1625d","#f09c80","#f3d3ad","#f8d905"]
-red_green_fake_colors = ["#abd284", "#9cb651", "#d6db89"]
-mask_img = Image.open("cancel.png")
+mask_img = Image.open("files/nug1.png")
+mask_img = mask_img.convert('RGB')
+
+size_x = mask_img.size[0]
+size_y = mask_img.size[1]
+
+min_val = min(size_x,size_y)
+min_rad = math.floor(min_val/150)
+
+if(min_rad == 0): min_rad = 1
+max_rad = math.floor(min_val/75)
+if(max_rad == 0):
+    print("IMG Size is too small")
+    quit()
+
+total_circles = math.floor(size_x*size_y/800)
+
+plate_bkg = colors.plate_2_bkg
+plate_txt = colors.plate_2_txt
 
 image = Image.new(mode='RGB', size=(size_x, size_y), color='white')
-i=0
-while(i < total_circles*0.75):
-    circle = gen_circle(size_x, size_y, min_rad, max_rad)
-    if(is_free_space(image,circle[0],circle[1],circle[2], size_x, size_y)):
-        if(in_mask(mask_img,circle[0],circle[1])):
-            draw_circle(image, get_circle_coordinates(circle[0],circle[1],circle[2]), random.choice(red_green_fake_colors))
-        else:
-            draw_circle(image, get_circle_coordinates(circle[0],circle[1],circle[2]), random.choice(red_green_colors_bkg))
-        print("circle " + str(i))
-        i += 1
 
+i = 0 #counter
 while(i < total_circles):
-    circle = gen_circle(size_x, size_y, min_rad, max_rad - 2)
-    if(is_free_space(image,circle[0],circle[1],circle[2], size_x, size_y)):
-        if(in_mask(mask_img,circle[0],circle[1])):
-            draw_circle(image, get_circle_coordinates(circle[0],circle[1],circle[2]), random.choice(red_green_fake_colors))
+    new_circle = circle.generate(size_x, size_y, min_rad, max_rad)
+    if(circle.is_free_space(image, new_circle[0], new_circle[1],\
+        new_circle[2], size_x, size_y)):
+        
+        coordinates = circle.get_coordinates(new_circle[0],new_circle[1],new_circle[2])
+
+        if(in_mask(mask_img,new_circle[0],new_circle[1]) == False):
+            plate = random.choice(plate_bkg)
         else:
-            draw_circle(image, get_circle_coordinates(circle[0],circle[1],circle[2]), random.choice(red_green_colors_bkg))
-        print("circle " + str(i))
+            plate = random.choice(plate_txt)
+        
+        circle.draw(image, coordinates, plate)
+        print("circle " + str(i) + "/" + str(total_circles))
         i += 1
 
-filename = "my_drawing(1).png"
+filename = "my_drawing(2).png"
 image.save(filename)
