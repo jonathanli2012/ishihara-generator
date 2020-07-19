@@ -14,12 +14,12 @@ class colors:
     plate_2_txt = ["#f3ad88","#f2b781","#eca993","#e37e74"]
 
     #plate 3
-    plate_3_bkg = [""]
-    plate_3_txt = [""]
+    plate_3_bkg = ["#b1a85a","#dfda75","#9f9456","#dfdc75"]
+    plate_3_txt = ["#e38576","#f2b58d","#dd8765","#f6d6ba"]
 
     #plate 4
-    plate_4_bkg = [""]
-    plate_4_txt = [""]
+    plate_4_bkg = ["#ed835c","#fabe82","#ef8966","#ffbe86"]
+    plate_4_txt = ["#9ca478","#eadd87","#b0ab60","#dfd373"]
 
     #plate 5
     plate_5_bkg = [""]
@@ -33,17 +33,17 @@ class colors:
     plate_7_bkg = [""]
     plate_7_txt = [""]
 
-    #plate 8
-    plate_8_bkg = [""]
-    plate_8_txt = [""]
+    #plate 8 - minor leakage from bkg into txt
+    plate_8_bkg = ["#dfd06e","#9d9f4c","#9ca594","#c6c89d"]
+    plate_8_txt = ["#f5aa6d","#e08c58"]
 
     #plate 9
     plate_9_bkg = [""]
     plate_9_txt = [""]
 
-    #plate 10
-    plate_10_bkg = [""]
-    plate_10_txt = [""]
+    #plate 10 #ffef52 leaks into txt a little
+    plate_10_bkg = ["#ffef52","#ffba57","#df7768","#ffb389"]
+    plate_10_txt = ["#8e9a5b","#b2bd7e","#d0db88","#a4ac75"]
 
     #plate 11
     plate_11_bkg = [""]
@@ -100,27 +100,3 @@ class colors:
     #plate 24
     plate_24_bkg = [""]
     plate_24_txt = [""]
-
-    #plate 25
-    plate_25_bkg = [""]
-    plate_25_txt = [""]
-
-    #plate 26
-    plate_26_bkg = [""]
-    plate_26_txt = [""]
-
-    #plate 27
-    plate_27_bkg = [""]
-    plate_27_txt = [""]
-
-    #plate 28
-    plate_28_bkg = [""]
-    plate_28_txt = [""]
-
-    #plate 29
-    plate_29_bkg = [""]
-    plate_29_txt = [""]
-
-    #plate 30
-    plate_30_bkg = [""]
-    plate_30_txt = [""]

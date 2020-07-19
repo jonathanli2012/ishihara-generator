@@ -27,6 +27,9 @@ plate_txt = colors.plate_2_txt
 
 image = Image.new(mode='RGB', size=(size_x, size_y), color='white')
 
+#from faker import Factory
+#fake = Factory.create()
+
 i = 0 #counter
 while(i < total_circles):
     new_circle = circle.generate(size_x, size_y, min_rad, max_rad)
@@ -36,13 +39,16 @@ while(i < total_circles):
         coordinates = circle.get_coordinates(new_circle[0],new_circle[1],new_circle[2])
 
         if(in_mask(mask_img,new_circle[0],new_circle[1]) == False):
-            plate = random.choice(plate_bkg)
+            #color = fake.hex_color()
+            #plate = random.choice([color])
+            plate = random.choice(colors.plate_1_bkg)
         else:
-            plate = random.choice(plate_txt)
+            #plate = random.choice(["#000000"])
+            plate = random.choice(colors.plate_1_txt)
         
         circle.draw(image, coordinates, plate)
         print("circle " + str(i) + "/" + str(total_circles))
         i += 1
 
-filename = "my_drawing(2).png"
+filename = "my_drawing1.png"
 image.save(filename)
