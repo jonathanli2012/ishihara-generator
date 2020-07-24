@@ -5,6 +5,10 @@ Instructions:
 ```
 Txt -> Ishihara Image (Experimental on Linux)
 $ ./main
+
+Txt -> Ishihara Image (Experimental on Windows)
+- Download main_windows.exe
+- Run
 ```
 
 ```
