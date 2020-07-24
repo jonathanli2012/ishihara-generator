@@ -3,6 +3,11 @@
 Instructions:
 
 ```
+Txt -> Ishihara Image (Experimental on Linux)
+$ ./main
+```
+
+```
 Image -> Ishihara Image
 $ setup.sh
 $ cd image-generator
